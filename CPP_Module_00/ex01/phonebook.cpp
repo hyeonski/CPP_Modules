@@ -71,7 +71,7 @@ int main(void)
 {
 	std::string input;
 	Contact contacts[8];
-	int	i = 0;
+	int	index = 0;
 
 	while (1)
 	{
@@ -81,11 +81,16 @@ int main(void)
 			break ;
 		if (input == "ADD")
 		{
-			contacts[i++].setContact();
+			if (index >= 8)
+			{
+				std::cout << "ADD: phonebook is full!" << std::endl;
+				continue ;
+			}
+			contacts[index++].setContact();
 		}
 		else if (input == "SEARCH")
 		{
-			if (i == 0)
+			if (index == 0)
 			{
 				std::cout << "SEARCH: nothing to search" << std::endl;
 				continue ;
@@ -93,11 +98,19 @@ int main(void)
 			std::cout << "+----------+----------+----------+----------+" << std::endl;
 			std::cout << "|     Index|First Name| Last Name|  Nickname|" << std::endl;
 			std::cout << "+----------+----------+----------+----------+" << std::endl;
-			for (int j = 0; j < i; j++)
-				contacts[j].printContact(j);
+			for (int i = 0; i < index; i++)
+				contacts[i].printContact(i);
 			std::cout << "+----------+----------+----------+----------+" << std::endl;
 			std::cout << "SEARCH: index > ";
 			std::getline(std::cin, input);
+			bool flag = true;
+			for (int i = 0; i < input.length(); i++)
+				if (!isnumber(input[i]))
+				{
+					flag = false;
+					break ;
+				}
+			int searched;
 		}
 		
 	}
