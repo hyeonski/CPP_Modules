@@ -21,6 +21,7 @@ public:
     std::string getContact();
 	void printContact(int index);
 	void putValue(std::string value);
+	void printAllContact();
 };
 
 void Contact::setContact(void)
@@ -66,6 +67,44 @@ void Contact::printContact(int index)
 	std::cout << '|' << std::endl;
 } 
 
+void Contact::printAllContact()
+{
+	std::cout << "first name : " << firstName << std::endl;
+	std::cout << "last name : " << lastName << std::endl;
+	std::cout << "nickname : " << nickname << std::endl;
+	std::cout << "login : " << login << std::endl;
+	std::cout << "postal address : " << postalAddress << std::endl;
+	std::cout << "email address : " << emailAddress << std::endl;
+	std::cout << "phone number : " << phoneNumber << std::endl;
+	std::cout << "birthday date : " << birthday << std::endl;
+	std::cout << "favorite meal : " << favoriteMeal << std::endl;
+	std::cout << "underwear color : " << underwearColor << std::endl;
+	std::cout << "darkest secret : " << darkestSecret << std::endl;
+}
+
+int checkSearchedIndex(std::string index, int limit)
+{
+	bool flag = true;
+
+	for (int i = 0; i < (int)index.length(); i++)
+	{
+		if (!isnumber(index[i]))
+		{
+			flag = false;
+			break ;
+		}
+	}
+	int value;
+	if (flag == false)
+		value = -1;
+	else
+	{
+		value = atoi(index.c_str());
+		if (!(0 <= value && value < limit))
+			value = -1;
+	}
+	return (value);
+}
 
 int main(void)
 {
@@ -103,15 +142,17 @@ int main(void)
 			std::cout << "+----------+----------+----------+----------+" << std::endl;
 			std::cout << "SEARCH: index > ";
 			std::getline(std::cin, input);
-			bool flag = true;
-			for (int i = 0; i < input.length(); i++)
-				if (!isnumber(input[i]))
-				{
-					flag = false;
-					break ;
-				}
-			int searched;
+			int searched = checkSearchedIndex(input, index);
+			if (searched != -1)
+				contacts[searched].printAllContact();
+			else
+				std::cout << "SEARCH: wrong index!" << std::endl;
 		}
-		
+		else if (input == "EXIT")
+		{
+			std::cout << "exit" << std::endl;
+			break ;
+		}
 	}
+	return (0);
 }
