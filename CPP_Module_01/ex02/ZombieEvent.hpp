@@ -7,9 +7,9 @@
 class ZombieEvent
 {
 private:
-	/* data */
+	std::string type;
 public:
-	ZombieEvent(/* args*/);
+	ZombieEvent();
 	~ZombieEvent();
 	void setZombieType(std::string type);
 	Zombie* newZombie(std::string name);

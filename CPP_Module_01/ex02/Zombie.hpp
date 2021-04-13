@@ -9,7 +9,8 @@ private:
 	std::string type;
 	std::string name;
 public:
-	Zombie(/* args*/);
+	Zombie();
+	Zombie(std::string type, std::string name);
 	~Zombie();
 	void announce(void);
 };
