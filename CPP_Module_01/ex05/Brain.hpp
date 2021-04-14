@@ -1,13 +1,14 @@
 #ifndef BRAIN_HPP
 # define BRAIN_HPP
 
+# include <string>
+
 class Brain
 {
 private:
 	/* data */
 public:
-	Brain(/* args*/);
-	~Brain();
+	std::string identify(void) const;
 };
 
 #endif
