@@ -55,7 +55,7 @@ int Fixed::toInt(void) const
 
 float Fixed::toFloat(void) const
 {
-	return (float)(value / (1 << frac));
+	return (float)(value) / (1 << frac);
 }
 
 std::ostream& operator<<(std::ostream& out, const Fixed& fixed)
