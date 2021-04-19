@@ -28,6 +28,8 @@ public:
 	void beRepaired(unsigned int amount);
 
 	const std::string& getName(void);
+	const unsigned int& getEnergyPoint(void);
+	void setEnergyPoint(unsigned int energy);
 };
 
 #endif

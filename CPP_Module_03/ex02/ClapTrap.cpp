@@ -123,3 +123,13 @@ const std::string& ClapTrap::getName(void)
 {
 	return (this->name);
 }
+
+const unsigned int& ClapTrap::getEnergyPoint(void)
+{
+	return (this->energyPoints);
+}
+
+void ClapTrap::setEnergyPoint(unsigned int energy)
+{
+	this->energyPoints = energy;
+}
