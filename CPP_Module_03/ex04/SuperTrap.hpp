@@ -3,19 +3,14 @@
 
 # include "NinjaTrap.hpp"
 
-class SuperTrap : public FragTrap, NinjaTrap
+class SuperTrap : public FragTrap, public NinjaTrap
 {
 public:
-	NinjaTrap();
-	NinjaTrap(const std::string& name);
-	NinjaTrap(NinjaTrap const &ninjaTrap);
-	NinjaTrap &operator=(NinjaTrap const &ninjaTrap);
-	~NinjaTrap();
-
-	void ninjaShoebox(const ClapTrap& clapTrap);
-	void ninjaShoebox(const FragTrap& fragTrap);
-	void ninjaShoebox(const ScavTrap& scavTrap);
-	void ninjaShoebox(const NinjaTrap& ninjaTrap);
-};
+	SuperTrap();
+	SuperTrap(const std::string& name);
+	SuperTrap(const SuperTrap& ninjaTrap);
+	SuperTrap &operator=(const SuperTrap& ninjaTrap);
+	~SuperTrap();
+};	
 
 #endif
