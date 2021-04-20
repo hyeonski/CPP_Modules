@@ -8,7 +8,7 @@ NinjaTrap::NinjaTrap() : ClapTrap()
 	this->energyPoints = 120;
 	this->maxEnergyPoints = 120;
 	this->meleeAttackDamage = 60;
-	this->meleeAttackDamage = 5;
+	this->rangedAttackDamage = 5;
 	this->armorDamageReduction = 0;
 	name = "default-ninja";
 
@@ -22,7 +22,7 @@ NinjaTrap::NinjaTrap(const std::string& name) : ClapTrap(name)
 	this->energyPoints = 120;
 	this->maxEnergyPoints = 120;
 	this->meleeAttackDamage = 60;
-	this->meleeAttackDamage = 5;
+	this->rangedAttackDamage = 5;
 	this->armorDamageReduction = 0;
 
 	std::cout << "NINJ4-TP <" << name << "> Created by name constructor!" << std::endl;	
