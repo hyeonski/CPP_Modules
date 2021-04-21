@@ -15,9 +15,11 @@ public:
 	AWeapon(std::string const & name, int apcost, int damage);
 	AWeapon(const AWeapon& aweapon);
 	virtual ~AWeapon();
+
 	std::string virtual getName() const;
 	int getAPCost() const;
 	int getDamage() const;
+	
 	virtual void attack() const = 0;
 };
 
