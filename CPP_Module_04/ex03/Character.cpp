@@ -51,7 +51,7 @@ std::string const & Character::getName() const
 
 void Character::equip(AMateria* m)
 {
-	for(int i = 0;i < 4;i++)
+	for(int i = 0; i < 4; i++)
 	{
 		if (!_inven[i])
 		{
@@ -64,7 +64,7 @@ void Character::equip(AMateria* m)
 void Character::unequip(int idx)
 {
 	if (idx < 0 || 4 <= idx)
-		return;
+		return ;
 	_inven[idx] = NULL;
 }
 
