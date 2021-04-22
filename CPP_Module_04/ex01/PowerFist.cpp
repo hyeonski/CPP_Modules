@@ -13,12 +13,7 @@ PowerFist::PowerFist(const PowerFist &powerFist) : AWeapon(powerFist)
 
 PowerFist &PowerFist::operator=(const PowerFist &powerFist)
 {
-	if (this != &powerFist)
-	{
-		this->_name = powerFist.getName();
-		this->_APCost = powerFist.getAPCost();
-		this->_damage = powerFist.getDamage();
-	}
+	AWeapon::operator=(powerFist);
 	return (*this);
 }
 

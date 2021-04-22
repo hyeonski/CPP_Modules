@@ -6,17 +6,20 @@
 class Enemy
 {
 private:
-	Enemy();
-	
-protected:
+	int _hp;
+	std::string _type;
 
+	Enemy();
 public:
 	Enemy(int hp, const std::string &type);
-	Enemy();
+	Enemy(const Enemy &enemy);
+	Enemy &operator=(const Enemy &enemy);
 	virtual ~Enemy();
 
-	std::string [] getType() const;
-	int getHP
+	const std::string &getType() const;
+	int getHP() const;
+
+	virtual void takeDamage(int damage);
 };
 
 #endif
