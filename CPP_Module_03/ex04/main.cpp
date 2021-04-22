@@ -82,6 +82,7 @@ int main(void)
 
 	SuperTrap trap7;
 	SuperTrap trap8("sushin");
+	SuperTrap trap9(trap8);
 	
 	std::cout << std::endl;
 	std::cout << "=====================================================" << std::endl;

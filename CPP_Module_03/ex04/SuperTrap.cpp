@@ -1,7 +1,7 @@
 #include "SuperTrap.hpp"
 #include <iostream>
 
-SuperTrap::SuperTrap() : FragTrap(), NinjaTrap()
+SuperTrap::SuperTrap() : ClapTrap(), FragTrap(), NinjaTrap()
 {
 	this->name = "defaul-super";
 	this->hitPoints = 100;
@@ -12,7 +12,7 @@ SuperTrap::SuperTrap() : FragTrap(), NinjaTrap()
 	std::cout << "SUP3R-TP <" << name << "> Created by default constructor!" << std::endl;
 }
 
-SuperTrap::SuperTrap(const std::string& name) : FragTrap(name), NinjaTrap(name)
+SuperTrap::SuperTrap(const std::string& name) : ClapTrap(name), FragTrap(name), NinjaTrap(name)
 {
 	this->name = name;
 	this->hitPoints = 100;
@@ -23,7 +23,7 @@ SuperTrap::SuperTrap(const std::string& name) : FragTrap(name), NinjaTrap(name)
 	std::cout << "SUP3R-TP <" << name << "> Created by name constructor!" << std::endl;	
 }
 
-SuperTrap::SuperTrap(const SuperTrap& superTrap) : FragTrap(superTrap), NinjaTrap(superTrap)
+SuperTrap::SuperTrap(const SuperTrap& superTrap) : ClapTrap(superTrap), FragTrap(superTrap), NinjaTrap(superTrap)
 {
 	std::cout << "SUP3R-TP <" << name << "> Created by copy constructor!" << std::endl;
 }
