@@ -1,14 +1,17 @@
 #ifndef SUPERMUTANT_HPP
 # define SUPERMUTANT_HPP
 
-class SuperMutant
+# include "Enemy.hpp"
+
+class SuperMutant : public Enemy
 {
 public:
 	SuperMutant();
-	SuperMutant(const SuperMutant& superMutant);
+	SuperMutant(const SuperMutant &superMutant);
 	SuperMutant &operator=(const SuperMutant &superMutant);
-	~SuperMutant();
-	
+	virtual ~SuperMutant();
+
+	void takeDamage(int damage);
 };
 
 #endif
