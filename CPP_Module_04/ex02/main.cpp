@@ -1,45 +1,158 @@
-#include "ISpaceMarine.hpp"
-#include "ISquad.hpp"
-#include "Squad.hpp"
+#include <iostream>
 #include "TacticalMarine.hpp"
 #include "AssaultTerminator.hpp"
-#include <iostream>
+#include "Squad.hpp"
 
 int main()
 {
-	std::cout << std::endl;
-	std::cout << "--------create----------" << std::endl;
-	std::cout << std::endl;
+	ISpaceMarine *bob = new TacticalMarine;
+	ISpaceMarine *jim = new AssaultTerminator;
 
-	ISpaceMarine* bob = new TacticalMarine;
-	ISpaceMarine* jim = new AssaultTerminator;
-	ISpaceMarine* hyopark = new TacticalMarine;
-	ISpaceMarine* yepark = new AssaultTerminator;
+	ISquad *vlc = new Squad;
 
-	std::cout << std::endl;
-	std::cout << "--------push----------" << std::endl;
-	std::cout << std::endl;
-	ISquad* vlc = new Squad;
 	vlc->push(bob);
 	vlc->push(jim);
-	vlc->push(hyopark);
-	vlc->push(yepark);
 
-	std::cout << std::endl;
-	std::cout << "--------use func----------" << std::endl;
-	std::cout << std::endl;
 	for (int i = 0; i < vlc->getCount(); ++i)
 	{
-		ISpaceMarine* cur = vlc->getUnit(i);
+		ISpaceMarine *cur = vlc->getUnit(i);
 		cur->battleCry();
 		cur->rangedAttack();
 		cur->meleeAttack();
 	}
 
-	std::cout << std::endl;
-	std::cout << "--------delete----------" << std::endl;
-	std::cout << std::endl;
 	delete vlc;
 
-	return 0;
+	std::cout << std::endl << "--- EXTRA ---" << std::endl << std::endl;
+
+	{
+		std::cout << std::endl << "==== COPY FROM 3 TO 1" << std::endl << std::endl;
+
+		Squad *squad = new Squad();
+		Squad *copy = new Squad();
+
+		std::cout << "->> ADDING TO SRC" << std::endl;
+		squad->push(new TacticalMarine());
+		squad->push(new TacticalMarine());
+		squad->push(new TacticalMarine());
+
+		std::cout << std::endl << "->> ADDING TO DEST" << std::endl;
+		copy->push(new AssaultTerminator());
+
+		std::cout << std::endl << "->> COPY START" << std::endl;
+		*copy = *squad;
+		std::cout << "->> COPY END" << std::endl << std::endl;
+
+		std::cout << "original: " << squad->getCount() << std::endl;
+		std::cout << "copy: " << copy->getCount() << std::endl;
+
+		std::cout << std::endl << "->> DELETE" << std::endl << std::endl;
+		delete squad;
+		delete copy;
+	}
+
+	{
+		std::cout << std::endl << "==== COPY FROM 1 TO 3" << std::endl << std::endl;
+
+		Squad *squad = new Squad();
+		Squad *copy = new Squad();
+
+		std::cout << "->> ADDING TO SRC" << std::endl;
+		squad->push(new AssaultTerminator());
+
+		std::cout << std::endl << "->> ADDING TO DEST" << std::endl;
+		copy->push(new TacticalMarine());
+		copy->push(new TacticalMarine());
+		copy->push(new TacticalMarine());
+
+		std::cout << std::endl << "->> COPY START" << std::endl;
+		*copy = *squad;
+		std::cout << "->> COPY END" << std::endl << std::endl;
+
+		std::cout << "original: " << squad->getCount() << std::endl;
+		std::cout << "copy: " << copy->getCount() << std::endl;
+
+		std::cout << std::endl << "->> DELETE" << std::endl << std::endl;
+		delete squad;
+		delete copy;
+	}
+
+	{
+		std::cout << std::endl << "==== COPY FROM 3 TO 3" << std::endl << std::endl;
+
+		Squad *squad = new Squad();
+		Squad *copy = new Squad();
+
+		std::cout << "->> ADDING TO SRC" << std::endl;
+		squad->push(new AssaultTerminator());
+		squad->push(new AssaultTerminator());
+		squad->push(new AssaultTerminator());
+
+		std::cout << std::endl << "->> ADDING TO DEST" << std::endl;
+		copy->push(new TacticalMarine());
+		copy->push(new TacticalMarine());
+		copy->push(new TacticalMarine());
+
+		std::cout << std::endl << "->> COPY START" << std::endl;
+		*copy = *squad;
+		std::cout << "->> COPY END" << std::endl << std::endl;
+
+		std::cout << "original: " << squad->getCount() << std::endl;
+		std::cout << "copy: " << copy->getCount() << std::endl;
+
+		std::cout << std::endl << "->> DELETE" << std::endl << std::endl;
+		delete squad;
+		delete copy;
+	}
+
+	{
+		std::cout << std::endl << "==== DELETE A LOT AT SQUAD FREE" << std::endl << std::endl;
+
+		Squad *squad = new Squad();
+
+		std::cout << "->> ADDING" << std::endl;
+		for (int index = 0; index < 40; ++index)
+		{
+			if (index % 2)
+				squad->push(new AssaultTerminator());
+			else
+				squad->push(new TacticalMarine());
+		}
+
+		std::cout << std::endl << "->> DELETING" << std::endl;
+		delete squad;
+	}
+
+	{
+		std::cout << std::endl << "==== GET AT" << std::endl << std::endl;
+
+		Squad *squad = new Squad();
+
+		std::cout << "->> ADDING" << std::endl;
+		for (int index = 0; index < 40; ++index)
+		{
+			if (index % 2)
+				squad->push(new AssaultTerminator());
+			else
+				squad->push(new TacticalMarine());
+		}
+
+		std::cout << std::endl << "->> USING ATTACK" << std::endl;
+		for (int index = -2; index < 43; ++index)
+		{
+			ISpaceMarine *marine = squad->getUnit(index);
+
+			std::cout << '[' << index << "] = " << marine << std::endl;
+
+			if (marine)
+				marine->meleeAttack();
+
+			std::cout << std::endl;
+		}
+
+		std::cout << std::endl << "->> DELETING" << std::endl;
+		delete squad;
+	}
+
+	return (0);
 }

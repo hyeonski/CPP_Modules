@@ -58,6 +58,8 @@ int main()
 	}
 
 	std::cout << std::endl << "==== KILL TEST ====" << std::endl << std::endl;
+	std::cout << "enemy health (SuperMutant): " << enemy->getHP() << std::endl;
+	std::cout << "weapon real damage (damage - 3): " << him.getWeapon()->getDamage() << std::endl;
 	him.attack(enemy);
 	him.attack(enemy);
 

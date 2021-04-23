@@ -49,7 +49,7 @@ int Squad::getCount() const
 
 ISpaceMarine *Squad::getUnit(int index) const
 {
-    if (index < 0 || index > _count)
+    if (index < 0 || index >= _count)
         return (NULL);
     return (_units[index]);
 }

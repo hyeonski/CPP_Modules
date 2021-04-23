@@ -56,15 +56,14 @@ void Character::attack(Enemy* enemy)
 {
 	if (_weapon && enemy)
 	{
-		int after = _AP - _weapon->getAPCost();
-		if (after < 0)
-			return;
+		if (_AP < _weapon->getAPCost())
+			return ;
 		std::cout << _name << " attacks " << enemy->getType() << " with a " << _weapon->getName() << std::endl;
 		_weapon->attack();
 		enemy->takeDamage(_weapon->getDamage());
-		if (enemy->getHP() <= 0)
+		_AP -= _weapon->getAPCost();
+		if (enemy->getHP() == 0)
 			delete enemy;
-		_AP = after;
 	}
 }
 
