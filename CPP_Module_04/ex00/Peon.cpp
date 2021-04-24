@@ -22,6 +22,11 @@ Peon::~Peon()
 	std::cout << "Bleuark..." << std::endl;
 }
 
+void Peon::getPolymorphed() const
+{
+	std::cout << _name << " has been turned into a pink pony!" << std::endl;
+}
+
 std::ostream& operator<<(std::ostream &out, Peon &peon)
 {
 	return (out << "I'm " << peon.getName() << " and I like otters!" << std::endl);

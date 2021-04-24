@@ -12,6 +12,8 @@ public:
 	Peon(const Peon& peon);
 	Peon& operator=(const Peon& peon);
 	~Peon();
+
+	void getPolymorphed(void) const;
 };
 
 std::ostream& operator<<(std::ostream &out, Peon &peon);

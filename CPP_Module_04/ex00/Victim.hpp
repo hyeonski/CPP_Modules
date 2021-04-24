@@ -17,7 +17,7 @@ public:
 	
 	const std::string& getName(void) const;
 	void setName(const std::string& name);
-	void getPolymorphed(void) const;
+	virtual void getPolymorphed(void) const;
 };
 
 std::ostream& operator<<(std::ostream& out, const Victim& victim);
