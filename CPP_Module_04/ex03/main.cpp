@@ -52,12 +52,12 @@ int main()
 		a->equip(source->createMateria("cure"));
 
 		*b = *a;
+		delete a;
 
 		b->use(0, *enemy);
 		b->use(1, *enemy);
 
 		delete source;
-		delete a;
 		delete b;
 		delete enemy;
 	}

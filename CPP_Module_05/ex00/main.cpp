@@ -18,7 +18,8 @@ int main()
 		Bureaucrat temp("Error1", 0);
 		std::cout << temp;
 	}
-	catch (std::exception &e) {
+	catch (std::exception &e)
+	{
 		std::cout << e.what() << std::endl;
 	}
 	try
