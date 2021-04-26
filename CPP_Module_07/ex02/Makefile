@@ -1,4 +1,4 @@
-NAME =	identify
+NAME =	array
 FLAGS =	-Wall -Wextra -Werror -std=c++98
 CC =	clang++
 SRCS =	main.cpp
