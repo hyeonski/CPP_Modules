@@ -13,7 +13,7 @@ public:
 	Victim(std::string name);
 	Victim(const Victim& victim);
 	Victim& operator=(const Victim& victim);
-	~Victim();
+	virtual ~Victim();
 	
 	const std::string& getName(void) const;
 	void setName(const std::string& name);
