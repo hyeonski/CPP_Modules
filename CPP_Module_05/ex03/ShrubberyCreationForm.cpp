@@ -28,7 +28,7 @@ void    ShrubberyCreationForm::execute(Bureaucrat const & executor) const
     
     std::ofstream out(getTarget() + "_shrubbery");
     if (!out.is_open())
-        throw ShrubberyCreationForm::fileOpenFailed();
+        throw ShrubberyCreationForm::FileOpenFailedException();
 
     out <<"                                              .       "<< std::endl;
     out <<"                                   .         ;        "<< std::endl;  
@@ -61,7 +61,7 @@ void    ShrubberyCreationForm::execute(Bureaucrat const & executor) const
     out.close();
 }
 
-const char* ShrubberyCreationForm::fileOpenFailed::what() const throw()
+const char* ShrubberyCreationForm::FileOpenFailedException::what() const throw()
 {
 	return ("Error: ShrubberyCreationForm: Opening File Failed!");
 }

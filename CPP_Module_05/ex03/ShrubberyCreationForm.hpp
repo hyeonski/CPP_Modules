@@ -15,7 +15,7 @@ public:
 
 	void execute(Bureaucrat const & executor) const;
 
-	class fileOpenFailed : public std::exception
+	class FileOpenFailedException : public std::exception
 	{
 	public:
 		 virtual const char* what() const throw();
