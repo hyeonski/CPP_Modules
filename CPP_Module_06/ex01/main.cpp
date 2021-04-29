@@ -26,7 +26,7 @@ void* serialize(void)
 	std::string *s2 = random_string();
 	*(reinterpret_cast<std::string *>(raw)) = *s1;
 	*(reinterpret_cast<int *>(raw + 24)) = n;
-	*(reinterpret_cast<std::string *>(raw + 32)) = *s2;
+	*(reinterpret_cast<std::string *>(raw + 28)) = *s2;
 	std::cout << "serialized s1: " << *s1 << " | n : " << n << " | s2 : " << *s2 << std::endl;
 	delete s1;
 	delete s2;
@@ -39,7 +39,7 @@ Data *deserialize(void *raw)
 
 	result->s1 = std::string(*(reinterpret_cast<std::string *>(raw)));
 	result->n = *(reinterpret_cast<int *>(static_cast<char *>(raw) + 24));
-	result->s2 = std::string(*(reinterpret_cast<std::string *>(static_cast<char *>(raw) + 32)));
+	result->s2 = std::string(*(reinterpret_cast<std::string *>(static_cast<char *>(raw) + 28)));
 	return (result);
 }
 

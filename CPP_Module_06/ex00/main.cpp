@@ -17,7 +17,7 @@ void printChar(double value)
 	std::cout << "char: ";
 	try
 	{
-		if (value < CHAR_MIN || value > CHAR_MAX)
+		if (isnan(value) || value < CHAR_MIN || value > CHAR_MAX)
 			throw ImpossibleConvertException();
 		char c = static_cast<char>(value);
 		if (32 <= c && c <= 126)
@@ -36,7 +36,7 @@ void printInt(double value)
 	std::cout << "int: ";
 	try
 	{
-		if (value < INT_MIN || value > INT_MAX)
+		if (isnan(value) || value < INT_MIN || value > INT_MAX)
 			throw ImpossibleConvertException();
 		int i = static_cast<int>(value);
 		std::cout << i << std::endl;
