@@ -2,6 +2,9 @@
 # define EASYFIND_HPP
 
 template <typename T>
-T::
+typename T::iterator easyfind(T& container, int value)
+{
+	return (std::find(container.begin(), container.end(), value));
+}
 
 #endif
