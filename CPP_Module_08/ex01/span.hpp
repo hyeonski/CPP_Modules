@@ -17,6 +17,15 @@ public:
 
 	void addNumber(int value);
 	unsigned long long shortestSpan(void);
+	unsigned long long longestSpan(void);
+
+	template <typename InputIterator>
+	void addNumber(InputIterator first, InputIterator last)
+	{
+		for (InputIterator iter = first; iter != last; iter++)
+			addNumber(*iter);
+	}
+
 	class NoSpaceException : public std::exception
 	{
 		virtual const char* what() const throw();
