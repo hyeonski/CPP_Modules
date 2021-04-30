@@ -13,7 +13,7 @@ public:
 	MutantStack(const MutantStack<T>& ref): std::stack<T>(ref) {};
 	MutantStack& operator=(const MutantStack& ref)
 	{
-		std::stack<T>::operator=(origin);
+		std::stack<T>::operator=(ref);
 		return (*this);
 	}
 	virtual ~MutantStack() {}

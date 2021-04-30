@@ -87,7 +87,7 @@ int main()
 		const MutantStack<int> const_stack = s_oper;
 		MutantStack<int>::const_iterator iter = const_stack.begin();
 		std::cout << *iter << std::endl;
-		//*iter = 5;
+		// *iter = 5;
 	}
 	catch(const std::exception& e)
 	{
@@ -95,6 +95,24 @@ int main()
 	}
 
 	std::cout << "================== const instance test ==============" << std::endl;
+
+	std::cout << "================== reverse iterator test ==============" << std::endl;
+	MutantStack<int> reverse;
+	reverse.push(1);
+	reverse.push(2);
+	reverse.push(3);
+	reverse.push(4);
+	reverse.push(5);
+	for (MutantStack<int>::reverse_iterator iter = reverse.rbegin(); iter != reverse.rend(); iter++)
+		std::cout << "value : " << *iter << std::endl;
+
+	std::cout << "================== const reverse iterator test ==============" << std::endl;
+
+	const MutantStack<int> const_reverse(reverse);
+	for (MutantStack<int>::const_reverse_iterator iter = const_reverse.rbegin(); iter != const_reverse.rend(); iter++)
+		std::cout << "value : " << *iter << std::endl;
+
+	std::cout << "================== reverse iterator test ==============" << std::endl;
 
 	return 0;
 }
