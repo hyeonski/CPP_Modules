@@ -1,56 +1,100 @@
+#include "mutantstack.hpp"
 #include <iostream>
-#include "Array.hpp"
+#include <list>
+#include <iostream>
 
 int main()
 {
-	Array<int> test(42);
+	std::cout << "================== mutant stack test ================" << std::endl;
 
-	for(unsigned int i = 0;i < test.size();i++)
-	{
-		std::cout << test[i] << " ";
-	}
-	std::cout << std::endl;
+	MutantStack<int> mstack;
+
+	mstack.push(5);
+	mstack.push(17);
+
+	std::cout << "top : " << mstack.top() << std::endl;
+
+	mstack.pop();
+	std::cout << "top : " << mstack.top() << std::endl;
+	std::cout << "size : " << mstack.size() << std::endl;
+
+	mstack.push(3);
+	mstack.push(5);
+	mstack.push(737);
+	mstack.push(0);
+
+	for(MutantStack<int>::iterator iter = mstack.begin(); iter != mstack.end(); iter++)
+		std::cout << "value : " << *iter << std::endl;
+
+	std::cout << "================== mutant stack test end=============" << std::endl;
+
+	std::cout << "================== list test ========================" << std::endl;
+
+	std::list<int> list;
+
+	list.push_back(5);
+	list.push_back(17);
+
+	std::cout << "top : " << list.front() << std::endl;
+
+	list.pop_front();
+	std::cout << "top : " << list.front() << std::endl;
+	std::cout << "size : " << list.size() << std::endl;
+
+	list.push_back(3);
+	list.push_back(5);
+	list.push_back(737);
+	list.push_back(0);
+
+	for(std::list<int>::iterator iter = list.begin(); iter != list.end(); iter++)
+		std::cout << "value : " << *iter << std::endl;
 	
-	try{
-		std::cout << test.size() << std::endl;
-		for(unsigned int i = 0;i < test.size();i++)
-		{
-			test[i] = i + 1;
-			std::cout << test[i] << " ";
-		}
-		std::cout << std::endl;
-		Array<int> test2(test);
-		for(unsigned int i = 0;i < test2.size();i++)
-		{
-			test[i] = i * 2;
-			std::cout << test2[i] << " ";
-		}
-		std::cout << std::endl;
-		std::cout << test[44] << std::endl;
+	std::cout << "================== list test end=====================" << std::endl;
 
-	}catch (std::exception &e){
-		std::cout << e.what() << std::endl;
+	std::cout << "================== copy constructor test ============" << std::endl;
+	MutantStack<int> s_copy(mstack);
+	MutantStack<int> s_oper = mstack;
+
+	s_copy.pop();
+	s_copy.pop();
+	s_copy.pop();
+	s_copy.push(9991);
+	s_copy.push(9992);
+	s_copy.push(9993);
+
+
+	for(MutantStack<int>::iterator iter = s_copy.begin(); iter != s_copy.end(); iter++)
+		std::cout << *iter << std::endl;
+
+	std::cout << "===============================" << std::endl;
+
+	s_oper.pop();
+	s_oper.pop();
+	s_oper.pop();
+	s_oper.push(9994);
+	s_oper.push(9995);
+	s_oper.push(9996);
+
+	for(MutantStack<int>::iterator iter = s_oper.begin(); iter != s_oper.end(); iter++)
+		std::cout << *iter << std::endl;
+
+	std::cout << "================== copy constructor test ============" << std::endl;
+	
+	std::cout << "================== const instance test ==============" << std::endl;
+
+	try
+	{
+		const MutantStack<int> const_stack = s_oper;
+		MutantStack<int>::const_iterator iter = const_stack.begin();
+		std::cout << *iter << std::endl;
+		//*iter = 5;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
 	}
 
-	const Array<int> test3(3);
-	try{
-		std::cout << test3.size() << std::endl;
-		for(unsigned int i = 0;i < test3.size();i++)
-		{
-			test3[i] = i + 1;
-			std::cout << test3[i] << " ";
-		}
-		std::cout << std::endl;
-		Array<int> test4(test3);
-		for(unsigned int i = 0;i < test4.size();i++)
-		{
-			test3[i] = i * 2;
-			std::cout << test4[i] << " ";
-		}
-		std::cout << std::endl;
-		std::cout << test3[44] << std::endl;
+	std::cout << "================== const instance test ==============" << std::endl;
 
-	}catch (std::exception &e){
-		std::cout << e.what() << std::endl;
-	}
+	return 0;
 }
