@@ -19,6 +19,16 @@ int main(void) {
 	std::cout << *easyfind(vector_fill, 100) << std::endl;
 	std::cout << (easyfind(put, 100) == put.end() ? "END!" : "NOT END!") << std::endl;
 
+	try
+	{
+		std::vector<int> test;
+		std::cout << *easyfind(test, 100) << std::endl;
+	}
+	catch(std::exception& e)
+	{
+		std::cout << e.what() << '\n';
+	}
+	
 	std::cout << "\n\ndeque\n\n";
 	std::deque<int> back_front;
 	std::deque<int> deque_fill(10, 100);
